@@ -1,0 +1,77 @@
+<div *ngIf="curated_list.length" class="main-curated-list">
+  <div>
+    <div class="cont-header-curated">
+      <button mat-raised-button #tooltip="matTooltip" [matTooltip]="tooltipContent"
+        [matTooltipPosition]="position.value!" matTooltipHideDelay="1000" class="tooltip"
+        matTooltipClass="tooltip-text">
+        Curated Bot
+        <img src="../../../assets/InfoIcon.png" alt="" class="info-icon">
+      </button>
+    </div>
+  </div>
+
+  <owl-carousel [options]="mySlideOptions" [items]="curated_list" [carouselClasses]="['owl-theme', 'sliding']">
+    <div class="item" *ngFor="let list of curated_list;let i = index">
+      <div fxLayout="column" class="container">
+        <div fxLayout.gt-sm="row" fxLayout.lt-md="column" fxLayoutGap="5px" class="block-2">
+          <div fxFlex fxLayoutAlign="center center" fxFlexFill class="grid-item">
+
+            <mat-card class="example-card">
+              <mat-card-header>
+                <img [src]="cdn+list.image" mat-card-avatar *ngIf="list.image" />
+                <mat-card-title>{{list.collection}}</mat-card-title>
+                <mat-card-subtitle>
+                  <p style="white-space: pre-line">
+                    <b>{{list.date | date:'short'}}</b>
+                  <div class="crop">
+                    <p>{{list.note}}</p>
+                  </div>
+                </mat-card-subtitle>
+              </mat-card-header>
+              <mat-card-content class="mat-card-content">
+                <div div class="info-box">
+                  <div class="info-box-second-row">
+                    <div class="info-box-content" *ngIf="list.floor_price">
+                      <p class="smaller-heading">FP: </p>
+                      <p class="info-box-text">{{list.floor_price}}</p>
+                    </div>
+                    <div class="info-box-content" *ngIf="list.volume">
+                      <p class="smaller-heading">Volume: </p>
+                      <p class="info-box-text">{{list.volume | number:'1.2-2'}}</p>
+                    </div>
+                    <div class="info-box-content" *ngIf="list.mentions">
+                      <p class="smaller-heading">Twitter Mentions: </p>
+                      <p class="info-box-text">{{list.mentions}}</p>
+                    </div>
+                    <div class="info-box-content" *ngIf="list.listed">
+                      <p class="smaller-heading">Listed: </p>
+                      <p class="info-box-text">{{list.listed}}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="info-box" style="display: flex;
+								flex-direction: column;
+								align-items: start;">
+                  <p style="margin: auto;"><b>Algo Preset</b></p>
+                  <p class="algo-preset" style="margin: auto;">{{list.algo_preset}}</p>
+                  <p class="algo-preset" style="margin: auto;">{{list.algo_preset2}}</p>
+                </div>
+              </mat-card-content>
+              <mat-card-actions *ngIf="list.collections.symbol" class="mat-card-actions">
+                <button mat-stroked-button class="main-button"
+                  (click)="this.openInNewTab('https://magiceden.io/marketplace/'+list.symbol)"><img
+                    src="../../../assets/ME_Full_Black_BG.png" alt=""></button>
+              </mat-card-actions>
+            </mat-card>
+
+
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+  </owl-carousel>
+
+
+</div>

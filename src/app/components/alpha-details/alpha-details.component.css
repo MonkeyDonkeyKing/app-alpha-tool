@@ -1,0 +1,94 @@
+.mat-dialog-content {
+	display: contents;
+}
+
+.info-box-content {
+	max-width: 200px;
+  white-space: inherit;
+}
+.info-box-content div:first{
+	margin-top: -6px;
+}
+.info-box-text {
+  font-size: medium;
+  font-weight: bold;
+  -webkit-box-orient: horizontal;
+  white-space: pre-line;
+}
+
+.info-box {
+  margin-top: 18px;
+	max-height: max-content;
+}
+
+.info-box-first-row{
+	margin-bottom: 0px;
+}
+button img {
+	height: 25px;
+	width: 25px;
+	display: inherit;
+}
+
+.avatar {
+	margin: 10px;
+	width: 100px;
+	height: 100px;
+}
+
+.mat-card-header {
+	max-height: min-content !important;
+}
+
+.info-text-main{
+	color: whitesmoke;
+	font-size: 16px;
+	font-weight: 100;
+	text-align: center;
+}
+
+section div {
+	margin-top: 1em;
+}
+
+b {
+	color: whitesmoke;
+}
+
+#more {
+	width: 22%;
+	background-color: var(--accent-text-stroke) !important;
+	color: whitesmoke !important;
+}
+
+
+.mat-dialog-actions button{
+	max-height: 45px;
+
+}
+
+@media screen and (max-width: 600px) {
+	.head-text {
+		display: flex;
+		flex-direction: column;
+		width: auto;
+	}
+
+	.mat-card-header .mat-card-title{
+		margin-bottom: 12px;
+		white-space: inherit;
+		text-overflow: inherit;
+		overflow: auto;
+		max-width: min-content;
+	}
+
+	.mat-dialog-actions {
+		justify-content: center !important;
+    flex-wrap: wrap !important;
+	}
+
+	.mat-dialog-content {
+		display: block;
+	}
+
+}

@@ -1,0 +1,5 @@
+<h1 mat-dialog-title>Connect a wallet to continue</h1>
+<button mat-stroked-button (click)="wallet_select('phantom')">Phantom <span
+    *ngIf="wallets.phantom">(Detected)</span></button>
+<button mat-stroked-button (click)="wallet_select('solflare')">Solflare <span
+    *ngIf="wallets.solflare">(Detected)</span></button>

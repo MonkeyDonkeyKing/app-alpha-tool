@@ -1,0 +1,40 @@
+<div *ngIf="profile.role == 1 && profile.holder_verify > 0">
+    <mat-card class="card">
+        <mat-card-title>Profile</mat-card-title>
+        <mat-card-content>
+            <form class="example-form">
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Wallet Address</mat-label>
+                    <input matInput [(ngModel)]="profile.address" [ngModelOptions]="{standalone: true}" disabled>
+                </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Username</mat-label>
+                    <input matInput [(ngModel)]="profile.username" [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Twitter</mat-label>
+                    <input matInput placeholder="Ex. https://twitter.com/solpix" [(ngModel)]="profile.twitter"
+                        [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>Discord ID</mat-label>
+                    <input matInput placeholder="Ex. solpx#1234" [(ngModel)]="profile.discord_id"
+                        [ngModelOptions]="{standalone: true}">
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width" appearance="fill">
+                    <mat-label>About</mat-label>
+                    <textarea matInput placeholder="Ex. Welcome to SOLPIX!" [(ngModel)]="profile.description"
+                        style="white-space: pre-wrap;" [ngModelOptions]="{standalone: true}"></textarea>
+                </mat-form-field>
+            </form>
+        </mat-card-content>
+        <mat-card-actions style="text-align: right;">
+            <button mat-stroked-button color="primary" (click)="save()">Save Profile</button>
+        </mat-card-actions>
+    </mat-card>
+</div>
+<app-curated-setting [profile]="profile" *ngIf="profile.holder_verify > 0">
+</app-curated-setting>

@@ -1,0 +1,103 @@
+<div class="center" >
+    <mat-card class="card"  style="width: 500px;">
+        <mat-card-title>Curated Setting</mat-card-title>
+        <mat-card-content>
+            <form class="example-form">
+                <section class="example-section">
+                    <h3>
+                        <mat-checkbox class="example-margin" [(ngModel)]="curated.set_fp" name="set_fp" ngDefaultControl>
+                            Set Floor Price
+                        </mat-checkbox>
+                    </h3>
+                    <p style="margin-left: 1em">
+                        <mat-checkbox class="example-margin" [(ngModel)]="curated.floor_price" name="floor_price" *ngIf="curated.set_fp" ngDefaultControl>
+                            Current Floor Price
+                            <span *ngIf="curated.floor_price">></span> 
+                            <span *ngIf="!curated.floor_price"><</span> 
+                            Previous Floor Price
+                        </mat-checkbox>
+                    </p>
+                    <h3>
+                        <mat-checkbox class="example-margin" [(ngModel)]="curated.set_lc" name="set_lc" ngDefaultControl>
+                            Set List Count
+                        </mat-checkbox>
+                    </h3>
+                    <p style="margin-left: 1em">
+                        <mat-checkbox class="example-margin" [(ngModel)]="curated.list_count" name="list_count" *ngIf="curated.set_lc" ngDefaultControl>
+                            Current List Count
+                            <span *ngIf="curated.list_count">></span> 
+                            <span *ngIf="!curated.list_count"><</span> 
+                            Previous List Count
+                        </mat-checkbox>
+                    </p>
+                    <h3>
+                        <mat-checkbox class="example-margin" [(ngModel)]="curated.set_tm" name="set_tm" ngDefaultControl>
+                            Set Twitter Mention
+                        </mat-checkbox>
+                    </h3>
+                    <p style="margin-left: 1em">
+                        <mat-checkbox class="example-margin" [(ngModel)]="curated.twitter_mention" name="twitter_mention" *ngIf="curated.set_tm" ngDefaultControl>
+                            Current Twitter Mention
+                            <span *ngIf="curated.twitter_mention">></span> 
+                            <span *ngIf="!curated.twitter_mention"><</span> 
+                            Previous Twitter Mention
+                        </mat-checkbox>
+                    </p>
+                    <h3>
+                        <mat-checkbox class="example-margin" [(ngModel)]="curated.set_v" name="set_v" ngDefaultControl>
+                            Set Volume
+                        </mat-checkbox>
+                    </h3>
+                    <p style="margin-left: 1em">
+                        <mat-checkbox class="example-margin" [(ngModel)]="curated.volume" name="volume"  *ngIf="curated.set_v" ngDefaultControl [ngModelOptions]="{standalone: true}">
+                            Current Volume
+                            <span *ngIf="curated.volume">></span> 
+                            <span *ngIf="!curated.volume"><</span> 
+                            Previous Volume
+                        </mat-checkbox>
+                    </p>
+                </section>
+                <section class="example-section">
+                    <h3>
+                        <mat-checkbox class="example-margin" [(ngModel)]="curated.set_discord" name="set_discord" (change)='discord_change()' ngDefaultControl>
+                            Set Discord Bot
+                        </mat-checkbox>
+                    </h3>
+                    <div *ngIf="curated.set_discord">
+                        <div *ngFor="let discord of curated.discord_bots; let i = index">
+                            <mat-card>
+                                <mat-form-field class="example-full-width" appearance="fill">
+                                    <mat-label>Select Range</mat-label>
+                                    <mat-select [(ngModel)]="discord.range" [ngModelOptions]="{standalone: true}">
+                                        <!-- <mat-option value="other">Other</mat-option> -->
+                                        <mat-option [value]="range.value" *ngFor="let range of ranges" [disabled]="range.disable">{{range.name}}</mat-option>
+                                    </mat-select>
+                                </mat-form-field>
+                                <mat-form-field class="example-full-width" appearance="fill">
+                                    <mat-label>Name</mat-label>
+                                    <input matInput placeholder="Devil Kids - Alpha" [(ngModel)]="discord.name"
+                                        [ngModelOptions]="{standalone: true}">
+                                </mat-form-field>
+                                <mat-form-field class="example-full-width" appearance="fill">
+                                    <mat-label>Channel ID</mat-label>
+                                    <input matInput placeholder="123456" [(ngModel)]="discord.channel"
+                                        [ngModelOptions]="{standalone: true}">
+                                </mat-form-field>
+                                <p style="margin-left: 1em">
+                                    <mat-checkbox class="example-margin" [(ngModel)]="discord.display_preset" name="display_preset_{{i}}" ngDefaultControl>
+                                        Display Preset
+                                    </mat-checkbox>
+                                </p>
+                                <!-- <button mat-stroked-button color="primary" (click)="remove_discord(i)" *ngIf="curated.discord_bots.length > 1"> Remove Discord Bot</button> -->
+                            </mat-card>
+                        </div>
+                        <!-- <button mat-stroked-button color="primary" (click)="add_more_discord()" *ngIf="curated.discord_bots.length < 3">Add More Discord Bot</button> -->
+                    </div>
+                </section>
+            </form>
+        </mat-card-content>
+        <mat-card-actions style="text-align: right;">
+            <button mat-stroked-button color="primary" (click)="save()">Save Curated Setting</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

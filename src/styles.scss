@@ -1,0 +1,419 @@
+/* You can add global styles to this file, and also import other style files */
+
+
+body {
+  margin: 0;
+  font-family: 'IBM Plex Mono', monospace !important;
+  background-color: var(--main-bg-color);
+  color: var(--accent-text-color);
+}
+
+/* Variables */
+
+:root {
+  --main-bg-color: #141e1e;
+  --secondary-text-color: #465050;
+  --main-text-color: #96a0a0;
+  --accent-text-color: #6e140f;
+  --accent-text-stroke: #3c0a0a;
+  --accent-text-strong: #aa0e0a;
+
+  h1 {
+    font-family: "IBM Plex Mono", monospace !important;
+  }
+
+  p {
+    font-family: "IBM Plex Mono", monospace !important;
+  }
+}
+
+app-homepage {
+  z-index: 10;
+
+}
+
+app-alpha-lists {
+  z-index: 11;
+  position: relative;
+}
+
+app-curated-lists {
+  z-index: 9;
+  position: relative;
+}
+
+//Colors
+
+$red: #96a0a0;
+$purple: #aa0e0a;
+
+.grid-item {
+  background: none;
+  border: 0;
+  box-sizing: border-box;
+  margin: 1em;
+  padding: 1em 2em;
+
+  // Using inset box-shadow instead of border for sizing simplicity
+  box-shadow: inset 0 0 0 2px $red;
+  color: $red;
+  font-size: inherit;
+  font-weight: 700;
+
+  // Required, since we're setting absolute on pseudo-elements
+  position: relative;
+  vertical-align: middle;
+
+  &::before,
+  &::after {
+    box-sizing: inherit;
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  &:hover {
+    color: $purple;
+  }
+
+  // Set up base styles, we're going to scale instead of animating width/height
+  &::before,
+  &::after {
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    transform-origin: center; // Ensure scaling is done from the center (expands outwards)
+  }
+
+  // scale3d(<scale-horizontal>, <scale-vertical>, <scale-depth>);
+  &::before {
+    border-top: 2px solid $purple;
+    border-bottom: 2px solid $purple;
+    transform: scale3d(0, 1, 1); // Shrink only width
+  }
+
+  &::after {
+    border-left: 2px solid $purple;
+    border-right: 2px solid $purple;
+    transform: scale3d(1, 0, 1); // Shrink only height
+  }
+
+  &:hover::before,
+  &:hover::after {
+    transform: scale3d(1, 1, 1); // Show full-size
+    transition: transform 0.5s;
+  }
+}
+
+
+.mat-chip-list-wrapper {
+  display: flex !important;
+  flex-direction: row !important;
+  flex-wrap: wrap !important;
+  align-items: first baseline;
+  margin-top: 10px;
+}
+
+
+.main-button {
+  background: var(--main-text-color) !important;
+  color: var(--main-bg-color) !important;
+  font-family: "IBM Plex Mono", monospace !important;
+  z-index: 100;
+}
+
+.tooltip-text {
+  font-size: 12px !important;
+  font-family: "IBM Plex Mono", monospace !important;
+  color: var(--main-text-color) !important;
+  border-radius: 4px !important;
+  margin: 5px !important;
+  max-width: 506px !important;
+  padding-left: 9px !important;
+  padding-right: 8px !important;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  transform: scale(0);
+  background-color: rgba($color: #141e1e, $alpha: 0.9);
+  position: relative;
+  margin-top: 131px !important;
+  font-size: 14px !important;
+  box-shadow: inset 0 0 0 2px $red !important;
+  padding: 10px !important;
+
+ }
+
+.main-menu {
+  background-color: transparent !important;
+  max-width: 134px !important;
+  margin-top: -13px;
+  box-shadow: none;
+}
+
+.main-menu button {
+  width: 100%;
+  height: 36px;
+  align-items: center;
+  display: flex;
+}
+
+
+.owl-dots button {
+  background: var(--main-bg-color) !important;
+  z-index: 15;
+  position: relative;
+}
+
+.owl-theme .owl-nav {
+  margin-top: -10px !important;
+  scale: 2;
+  color: var(--accent-text-strong);
+  width: fit-content;
+}
+
+.owl-prev {
+  left: calc(72.9vw/3);
+  position: relative;
+}
+.owl-next{
+  right: calc(72.5vw/-3);
+  position: relative;
+}
+
+mat-card {
+  padding: 12px !important;
+  font-family: "IBM Plex Mono", monospace !important;
+
+}
+
+.mat-card-subtitle,
+.mat-card-content {
+  font-size: 13px;
+}
+
+
+.mat-card-header {
+  background: var(--main-text-color) !important;
+  border-radius: 10px !important;
+  align-items: center;
+  max-height: 120px !important;
+}
+
+/* Alpha / Curated Calls */
+.mat-card-title {
+  font-size: 20px;
+  color: white;
+  margin-top: 20px;
+  font-family: "IBM Plex Mono", monospace !important;
+
+}
+
+.cont-header-alpha {
+  text-align: center;
+  color: var(--main-text-color);
+  display: flex;
+  justify-content: start;
+  margin-top: 6rem;
+  margin-left: 2em;
+  margin-bottom: -15px;
+}
+.cont-header-curated {
+  text-align: center;
+  color: var(--main-text-color);
+  display: flex;
+  justify-content: start;
+  margin-left: 2em;
+  margin-bottom: -15px;
+}
+
+.header-alpha {
+  font-size: 30px;
+  margin: 0 0 16px;
+  margin-top: 0px;
+  color: var(--main-text-color);
+  width: fit-content;
+  margin-bottom: -15px;
+}
+
+.container {
+  display: block;
+  justify-content: center;
+}
+
+.example-card {
+  background: var(--secondary-text-color);
+  color: var(--main-text-color);
+  min-width: calc(100vw/5);
+  width: 100%;
+  min-height: 354px;
+  max-height: 354px;
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+
+}
+
+
+.grid-item {
+  padding: 8px;
+
+}
+
+
+.mat-card-content {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 8px;
+
+}
+
+map-chip-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.mat-chip-list-wrapper1 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  /* number of lines to show */
+  line-clamp: 1;
+  -webkit-box-orient: vertical;
+}
+
+.crop {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  /* number of lines to show */
+  line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+mat-card-header img {
+  width: 80px !important;
+  height: 80px !important;
+  margin-left: 5px;
+}
+
+.mat-chip-list {
+  margin-top: -10px;
+}
+
+.mat-chip-list-second {
+  margin-top: -10px !important;
+
+}
+
+.mat-card-actions {
+  justify-content: center !important;
+  display: flex !important;
+  padding: 0px !important;
+  margin-bottom: 6px !important;
+  margin-top: -10px;
+  margin-left: 0px !important;
+}
+
+.info-box {
+  background: var(--main-bg-color);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  max-height: 100px;
+  margin-top: 15px;
+  min-height: 90px;
+  justify-content: center;
+
+}
+
+.smaller-heading {
+  font-size: smaller;
+  margin-bottom: auto;
+  font-weight: lighter;
+}
+
+.info-box-text {
+  font-size: 16px;
+  font-weight: 100;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  white-space: pre-line;
+  margin: 0 0 6px;
+  color: whitesmoke;
+}
+
+.info-box-first-row {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: -13px;
+}
+
+
+.info-box-second-row {
+  display: flex;
+  justify-content: space-around;
+}
+
+.info-box-content {
+  overflow: hidden;
+  text-overflow: clip;
+  white-space: nowrap;
+  max-width: min-content;
+}
+
+mat-dialog-container {
+  color: var(--main-text-color) !important;
+  background: var(--secondary-text-color) !important;
+  box-shadow: inset 0 0 0 2px $purple !important;
+}
+
+
+.mat-card-actions:not(.mat-card-actions-align-end) .mat-button:first-child,
+.mat-card-actions:not(.mat-card-actions-align-end) .mat-raised-button:first-child,
+.mat-card-actions:not(.mat-card-actions-align-end) .mat-stroked-button:first-child {
+  margin-left: 5px !important;
+  margin-right: 5px !important;
+}
+
+.mat-card>.mat-card-actions:last-child {
+  bottom: 5px;
+  position: absolute;
+  width: 97%;
+}
+
+@media screen and (max-width: 600px) {
+  .mat-card-header .mat-card-title {
+    margin-bottom: 12px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 53vw;
+  }
+  .mat-card {
+    min-height: 395px !important;
+  }
+
+  .owl-prev{
+    position: relative;
+    left: calc(55vw/3);
+  }
+  .owl-next{
+    position: relative;
+    left: calc(68vw/3);
+  }
+
+}
+
+.mat-progress-spinner circle,
+.mat-spinner circle {
+  stroke: var(--accent-text-strong);
+}

@@ -1,0 +1,156 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+.toolbar {
+  background-color: var(--main-bg-color);
+  justify-content: center;
+}
+
+.centerize {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 36px;
+}
+
+.centerize span {
+  margin-top: 2em;
+
+}
+
+.example-button-row {
+  margin-top: 7rem;
+}
+
+#solpix-logo {
+  width: 150px;
+  margin-left: 30px;
+}
+
+.header_data {
+  background-color: var(--accent-text-stroke);
+  min-height: 45px !important;
+  height: 45px !important;
+  justify-content: center;
+  font-family: "IBM Plex Mono", monospace !important;
+  font-size: medium;
+  /* background: linear-gradient(0deg, rgba(2,0,36,1) 0%, rgba(20,30,30,1) 0%, rgba(60,10,10,1) 20%); */
+  z-index: 10;
+}
+
+.text-above-wallet {
+  font-size: 10px;
+  color: var(--main-text-color);
+  position: absolute;
+  top: 44px;
+  right: 71px;
+
+}
+
+.header_data div {
+  font-size: 0.8em;
+  color: var(--main-text-color);
+}
+
+.header_data div span {
+  padding-right: 0.3em;
+}
+
+.header_data div span:nth-child(2) {
+  padding-right: 1em;
+}
+
+.center {
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+
+section a {
+  background-color: var(--main-text-color);
+}
+
+/*
+ * Actual Sticky Footer Styles
+ */
+.all-wrap {
+  min-height: 100vh;
+}
+
+.page-wrap {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.content {
+  flex: 1;
+}
+
+.center-spinner {
+  align-items: center;
+  justify-content: center;
+  display: flex;
+}
+
+#permitted {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 10px;
+  justify-content: center;
+  color: whitesmoke !important;
+  z-index: 1;
+
+}
+
+#permitted1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 200px;
+  color: whitesmoke !important;
+  z-index: 1;
+}
+
+.main-button {
+  align-self: last baseline;
+  top: 8px;
+  border-radius: 6px;
+  background: var(--secondary-text-color) !important;
+  margin-right: 20px;
+  color: whitesmoke !important;
+}
+
+
+
+.main-button-2 {
+  margin-left: 20px;
+  border-radius: 6px;
+  background: var(--secondary-text-color) !important;
+}
+
+/*
+   * Make the Component injected by Router Outlet full height:
+   */
+main {
+  display: flex;
+  flex-direction: column;
+  /* > *:not(router-outlet) {
+			flex: 1;
+			display: block;
+		} */
+
+}
+
+.menu_button {
+  min-width: 200px;
+}
+
+.background-dotted {
+  position: fixed;
+  top: -4vh;
+  width: auto;
+  bottom: -8vh;
+  scale: 1.1;
+}

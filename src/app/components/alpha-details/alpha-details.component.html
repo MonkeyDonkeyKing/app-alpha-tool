@@ -1,0 +1,99 @@
+<mat-dialog-content class="mat-typography">
+  <div>
+    <div class="mat-card-header">
+      <img class="avatar" [src]="cdn + alpha_list.profile" mat-card-avatar *ngIf="alpha_list.profile" />
+      <section>
+        <mat-card-title class="mat-card-title">{{alpha_list.name}}</mat-card-title>
+        <mat-card-subtitle>
+          <b *ngIf="alpha_list.caller">{{alpha_list.caller}}<br></b>
+          <b>{{alpha_list.date | date:'short'}}</b>
+          <div *ngIf="alpha_list.project_details">
+            <p>{{alpha_list.project_details}}</p>
+          </div>
+        </mat-card-subtitle>
+      </section>
+    </div>
+
+    <section class="head-text">
+      <div *ngIf="alpha_list.project_analysis">
+        <p><b>Project Analysis</b></p>
+        <p>{{alpha_list.project_analysis}}</p>
+      </div>
+      <div *ngIf="alpha_list.risk_analysis">
+        <p><b>Risk Analysis</b></p>
+        <p>{{alpha_list.risk_analysis}}</p>
+      </div>
+      <div *ngIf="alpha_list.note">
+        <p><b>Note</b></p>
+        <p>{{alpha_list.note}}</p>
+      </div>
+    </section>
+
+
+    <div>
+      <div class="info-box" *ngIf="alpha_list.p_l != 'NaN'">
+        <div class="info-box-first-row">
+          <p class="smaller-heading">Total Hold Duration:</p>
+          <p class="info-text-main">{{alpha_list.duration_date}}</p>
+        </div>
+        <div class="info-box-second-row">
+          <div class="info-box-content">
+            <p class="smaller-heading">Called Floor Price</p>
+            <p class="info-text-main">{{alpha_list.call_FP}}</p>
+          </div>
+          <div class="info-box-content">
+            <p class="smaller-heading">Closed Floor Price:</p>
+            <p class="info-text-main">{{alpha_list.exit_FP}}</p>
+          </div>
+          <div class="info-box-content">
+            <p class="smaller-heading">Profit & Loss:</p>
+            <p class="info-text-main">{{alpha_list.p_l}}%</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="info-box">
+        <div class="info-box-first-row" *ngIf="alpha_list.duration && alpha_list.duration != 'N/A'">
+          <p class="smaller-heading">Duration:</p>
+          <p class="info-text-main">{{alpha_list.duration}}</p>
+        </div>
+        <div class="info-box-second-row">
+          <div *ngIf="alpha_list.floor_price">
+            <p class="smaller-heading">Called FP: </p>
+            <p class="info-text-main">{{alpha_list.floor_price / 1000000000 }}</p>
+          </div>
+          <div *ngIf="alpha_list.volume_24h">
+            <p class="smaller-heading">Volume (24hrs): </p>
+            <p class="info-text-main">{{alpha_list.volume_24h}}</p>
+          </div>
+          <div *ngIf="alpha_list.twitter_mentions">
+            <p class="smaller-heading">Twitter Mentions: </p>
+            <p class="info-text-main">{{alpha_list.twitter_mentions}}</p>
+          </div>
+          <div *ngIf="alpha_list.entry">
+            <p class="smaller-heading">Entry: </p>
+            <p class="info-text-main">{{alpha_list.entry}}</p>
+          </div>
+          <div *ngIf="alpha_list.exit">
+            <p class="smaller-heading">Exit: </p>
+            <p class="info-text-main">{{alpha_list.exit}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <mat-dialog-actions align="center" class="mat-dialog-actions">
+      <button mat-stroked-button class="main-button"
+        (click)="this.openInNewTab('https://magiceden.io/marketplace/'+alpha_list.symbol)"><img
+          src="../../../assets/ME_Full_Black_BG.png" alt=""></button>
+      <button mat-stroked-button class="main-button" (click)="this.openInNewTab(alpha_list.twitter)"
+        *ngIf="alpha_list.twitter"><img src="../../../assets/twitter.png" alt="" style="height: 25px;
+										width: 25px;"></button>
+      <button mat-stroked-button class="main-button" (click)="this.openInNewTab(alpha_list.website)"
+        *ngIf="alpha_list.website"><img src="../../../assets/website.png" alt="" style="height: 25px;
+										width: 25px;"></button>
+      <button mat-stroked-button class="main-button" (click)="this.openInNewTab(alpha_list.discord)"
+        *ngIf="alpha_list.discord"><img src="../../../assets/discord.png" alt="" style="height: 25px;
+										width: 25px;"></button>
+      <button class="main-button" id="more" mat-stroked-button [mat-dialog-close]="true" cdkFocusInitial>Close</button>
+    </mat-dialog-actions>

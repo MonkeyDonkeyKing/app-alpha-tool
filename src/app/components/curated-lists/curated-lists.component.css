@@ -1,0 +1,68 @@
+.main-curated-list {
+  z-index: 9;
+  position: relative;
+}
+
+.header-alpha {
+  margin-left: 25px;
+  margin-top: -40px;
+}
+
+.main-button {
+  max-width: 25px;
+}
+
+.mat-card-header {
+  margin-bottom: 5px;
+}
+
+.info-box {
+  margin-top: 5px;
+}
+
+.tooltip {
+  background-color: transparent;
+  font-size: 25px;
+  font-family: "IBM Plex Mono", monospace !important;
+  box-shadow: none;
+  padding: 0px !important;
+  color: var(--main-text-color);
+  margin-bottom: 10px;
+}
+.info-icon {
+  width: 30px !important;
+  height: 30px !important;
+  margin-bottom: 5px !important;
+ }
+
+
+@media screen and (max-width: 600px) {
+  .main-curated-list {
+    margin-top: 40px;
+  }
+
+  .grid-item {
+    margin: 0px;
+
+  }
+
+  .mat-card-actions {
+    justify-content: center;
+    flex-wrap: wrap !important;
+  }
+
+  #more {
+    margin-top: 3px;
+  }
+
+  .algo-preset {
+    text-align: start;
+    white-space: break-spaces;
+  }
+
+  .algo-preset p{
+    font-weight: 200 !important;
+  }
+
+
+}

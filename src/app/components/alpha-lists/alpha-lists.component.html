@@ -1,0 +1,158 @@
+<div class="center-spinner" *ngIf="!alpha_list.length">
+  <mat-spinner></mat-spinner>
+</div>
+
+<div *ngIf="alpha_list.length">
+  <div class="timer">
+    <span style="color: var(--main-text-color)">[AUTO REFRESH IN {{ transform(timeLeft) }}]</span>
+  </div>
+  <div>
+    <div class="cont-header-alpha">
+      <button mat-raised-button #tooltip="matTooltip" [matTooltip]="tooltipContent"
+        [matTooltipPosition]="position.value!" matTooltipHideDelay="1000" class="tooltip" matTooltipClass="tooltip-text"
+        matTooltipTouchGestures="auto">
+        Human Alpha Bot
+        <img src="../../../assets/InfoIcon.png" alt="" class="info-icon" />
+      </button>
+      <!-- <button (click)="sort_alpha()">Sort by ongoing</button> -->
+    </div>
+  </div>
+  <!-- Slider -->
+  <owl-carousel [options]="mySlideOptions" [items]="alpha_list" [carouselClasses]="['owl-theme', 'sliding']">
+    <div class="item" *ngFor="let alpha of alpha_list; let i = index">
+      <div>
+        <div class="container">
+          <div fxLayout.gt-sm="row" fxLayout.lt-md="column" fxLayoutGap="5px" class="block-2">
+            <div fxFlex fxLayoutAlign="center center" fxFlexFill class="grid-item">
+              <!-- Card -->
+              <mat-card class="example-card">
+                <mat-card-header>
+                  <img [src]="cdn + alpha.profile" mat-card-avatar *ngIf="alpha.profile" />
+                  <mat-card-title>{{ alpha.name }}</mat-card-title>
+                  <mat-card-subtitle>
+                    <b *ngIf="alpha.caller">{{ alpha.caller }}<br /></b>
+                    <b>{{ alpha.date | date : "short" }}</b>
+                    <div *ngIf="alpha.project_details" class="crop">
+                      <p style="white-space: pre-line">
+                        {{ alpha.project_details }}
+                      </p>
+                    </div>
+                  </mat-card-subtitle>
+                </mat-card-header>
+                <div class="mat-chip-list">
+                  <div *ngIf="alpha.call_FP != 'N/A' && alpha.exit_FP != 'N/A'">
+                    <div class="info-box">
+                      <div class="info-box-first-row">
+                        <p class="smaller-heading">Total Hold Duration:</p>
+                        <p class="info-box-text">
+                          {{ alpha.duration_date }}
+                        </p>
+                      </div>
+                      <div class="info-box-second-row">
+                        <div class="info-box-content">
+                          <p class="smaller-heading">Called FP:</p>
+                          <p class="info-box-text">
+                            {{ alpha.call_FP }}
+                          </p>
+                        </div>
+                        <div class="info-box-content">
+                          <p class="smaller-heading">Closed FP:</p>
+                          <p class="info-box-text">
+                            {{ alpha.exit_FP }}
+                          </p>
+                        </div>
+                        <div class="info-box-content">
+                          <p class="smaller-heading">Profit & Loss:</p>
+                          <p class="info-box-text">{{ alpha.p_l }}%</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <mat-card-content class="mat-card-content">
+                  <div class="mat-chip-list-second">
+                    <div>
+                      <div class="info-box">
+                        <div class="info-box-first-row" *ngIf="alpha.duration && alpha.duration != 'N/A'">
+                          <p class="smaller-heading">Duration:</p>
+                          <p class="info-box-text">
+                            {{ alpha.duration }}
+                          </p>
+                        </div>
+                        <div class="info-box-second-row">
+                          <div class="info-box-content" *ngIf="alpha.floor_price">
+                            <p class="smaller-heading">Called FP:</p>
+                            <p class="info-box-text">
+                              {{ alpha.floor_price / 1000000000 }}
+                            </p>
+                          </div>
+                          <div class="info-box-content" *ngIf="alpha.volume_24h">
+                            <p class="smaller-heading">Volume (24hrs):</p>
+                            <p class="info-box-text">
+                              {{ alpha.volume_24h }}
+                            </p>
+                          </div>
+                          <div class="info-box-content" *ngIf="alpha.twitter_mentions">
+                            <p class="smaller-heading">Twitter Mentions:</p>
+                            <p class="info-box-text">
+                              {{ alpha.twitter_mentions }}
+                            </p>
+                          </div>
+                          <div class="info-box-content" *ngIf="alpha.entry">
+                            <p class="smaller-heading">Entry:</p>
+                            <p class="info-box-text">
+                              {{ alpha.entry }}
+                            </p>
+                          </div>
+                          <div class="info-box-content" *ngIf="alpha.exit">
+                            <p class="smaller-heading">Exit:</p>
+                            <p class="info-box-text">
+                              {{ alpha.exit }}
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </mat-card-content>
+                <mat-card-actions class="mat-card-actions">
+                  <button mat-stroked-button class="main-button" (click)="
+                      this.openInNewTab(
+                        'https://magiceden.io/marketplace/' + alpha.symbol
+                      )
+                    ">
+                    <img src="../../../assets/ME_Full_Black_BG.png" alt="" />
+                  </button>
+
+                  <button mat-stroked-button class="main-button" (click)="this.openInNewTab(alpha.twitter)"
+                    *ngIf="alpha.twitter">
+                    <img src="../../../assets/twitter.png" alt="" style="height: 25px; width: 25px" />
+                  </button>
+
+                  <button mat-stroked-button class="main-button" (click)="this.openInNewTab(alpha.website)"
+                    *ngIf="alpha.website">
+                    <img src="../../../assets/website.png" alt="" style="height: 25px; width: 25px" />
+                  </button>
+
+                  <button mat-stroked-button class="main-button" (click)="this.openInNewTab(alpha.discord)"
+                    *ngIf="alpha.discord">
+                    <img src="../../../assets/discord.png" alt="" style="height: 25px; width: 25px" />
+                  </button>
+
+                  <button mat-stroked-button class="main-button" (click)="this.openInNewTab(alpha.link)"
+                    *ngIf="alpha.link">
+                    Link
+                  </button>
+
+                  <button mat-stroked-button class="main-button" id="more" (click)="openDialog(alpha)">
+                    More
+                  </button>
+                </mat-card-actions>
+              </mat-card>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </owl-carousel>
+</div>
